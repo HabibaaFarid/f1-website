@@ -1,9 +1,17 @@
+import { Route, Routes } from 'react-router-dom';
+import RaceDetailsPage from './pages/RaceDetailsPage';
+import SeasonRacesPage from './pages/SeasonRacesPage';
+import SeasonsPage from './pages/SeasonsPage';
 import './App.css';
+
 
 function App() {
   return (
-    <div>
-    </div>
+    <Routes>
+      <Route path='/' element={<SeasonsPage />} />
+      <Route path='/season/:seasonId' element={<SeasonRacesPage />} />
+      <Route path='/season/:seasonId/:roundId' element={<RaceDetailsPage />} />
+    </Routes>
   )
 
 }
