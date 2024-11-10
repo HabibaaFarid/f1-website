@@ -1,21 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useSeasons from '../modules/seasons/hooks/useSeasons';
 import { Pagination } from 'antd';
 import SeasonsView from '../modules/seasons/components/SeasonsView';
 import Loader from '../modules/shared/Loader';
+import { useSearchParams } from 'react-router-dom';
 
 function SeasonsPage() {
-    const [params, setParams] = useState({ page: 1, limit: 10 });
+    const [searchParams, setSearchParams] = useSearchParams();
 
-    const offset = (params.page - 1) * params.limit;
+    const page = Number(searchParams.get('page')) || 1;
+    const limit = Number(searchParams.get('limit')) || 10;
+
+    const offset = (page - 1) * limit;
 
     const { data, isLoading } = useSeasons({
-        limit: params.limit,
+        limit,
         offset,
     });
 
     const handlePageChange = (page, pageSize) => {
-        setParams((prev) => ({ ...prev, page, limit: pageSize }));
+        setSearchParams({ page, limit: pageSize });
     };
 
     if (isLoading) {
@@ -33,8 +37,8 @@ function SeasonsPage() {
             <div className='flex justify-end'>
                 <Pagination
                     size='large'
-                    current={params.page}
-                    pageSize={params.limit}
+                    current={page}
+                    pageSize={limit}
                     total={Number(data?.total)}
                     onChange={handlePageChange}
                     showSizeChanger={false}
