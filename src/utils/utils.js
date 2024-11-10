@@ -1,3 +1,5 @@
+//This file for general functions
+
 export function convertXMLtoJSON(xml) {
     const parser = new DOMParser();
     const xmlDoc = parser.parseFromString(xml, "application/xml");
@@ -50,13 +52,17 @@ export function convertXMLtoJSON(xml) {
 }
 
 export function convertDate(originalDate) {
+    //This function is for converting the format from 'YYYY-MM-DD' to 'Month Day, Year'
+
     const date = new Date(originalDate);
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const formattedDate = date.toLocaleDateString('en-US', options);
     return formattedDate
 }
 
-export const sortRaces = (races, pinnedRaces ) => {
+export const sortRaces = (races, pinnedRaces) => {
+    //This function is for sorting the races and make sure that pinned races are always shown at the top
+
     const sortedRaces = races?.sort((a, b) => {
         const isA = pinnedRaces?.includes(a.raceName)
         const isB = pinnedRaces?.includes(b.raceName)

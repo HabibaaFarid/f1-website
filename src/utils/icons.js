@@ -1,3 +1,5 @@
+//This file is for all icons used in the app in SVG format
+
 export const ListIcon = () => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
