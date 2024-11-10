@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import useSeasonRaces from '../modules/races/hooks/useSeasonRaces';
-import { Button, Pagination, Spin } from 'antd';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Pagination } from 'antd';
+import { useParams } from 'react-router-dom';
+import SeasonRacesView from '../modules/races/components/SeasonRacesView';
+import Loader from '../modules/shared/Loader';
+import BackButton from '../modules/shared/BackButton';
 
 function SeasonRacesPage() {
-    const navigate = useNavigate()
-
     const { seasonId } = useParams()
 
     const [params, setParams] = useState({ page: 1, limit: 10 });
@@ -17,7 +18,6 @@ function SeasonRacesPage() {
         limit: params.limit,
         offset,
     });
-    console.log(data, 'aaaa')
 
     const handlePageChange = (page, pageSize) => {
         setParams((prev) => ({ ...prev, page, limit: pageSize }));
@@ -25,28 +25,18 @@ function SeasonRacesPage() {
 
     if (isLoading) {
         return (
-            <div className='flex justify-center align-center h-[300px]'>
-                <Spin />
-            </div>
+            <Loader />
         );
     }
 
     return (
-        <div>
-            <p className='text-[20px] font-semibold'>{seasonId} Races</p>
-
-            <div className='flex flex-col gap-3 p-5'>
-                {
-                    data?.RaceTable?.Races?.map(race => {
-                        return (
-                            <div className='flex justify-between'>
-                                <p>Round {race.round}</p>
-                                <Button onClick={() => navigate(`/season/${race.season}/${race.round}`)}>View Race Details</Button>
-                            </div>
-                        )
-                    })
-                }
+        <div className='py-5 px-3 space-y-3'>
+            <div className='flex gap-2'>
+                <BackButton />
+                <p className='text-[20px] font-semibold'>{seasonId} Races</p>
             </div>
+
+            <SeasonRacesView races={data?.RaceTable?.Races} />
 
             <div className='flex justify-end'>
                 <Pagination

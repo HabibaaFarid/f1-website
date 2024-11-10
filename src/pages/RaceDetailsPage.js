@@ -1,8 +1,11 @@
 
 import React, { useState } from 'react'
-import { Pagination, Spin } from 'antd';
+import { Pagination } from 'antd';
 import useRaceDetails from '../modules/race-details/hooks/useRaceDetails';
 import { useParams } from 'react-router-dom';
+import RaceDetailsView from '../modules/race-details/components/RaceDetailsView';
+import Loader from '../modules/shared/Loader';
+import BackButton from '../modules/shared/BackButton';
 
 function RaceDetailsPage() {
     const { seasonId, roundId } = useParams()
@@ -24,28 +27,18 @@ function RaceDetailsPage() {
 
     if (isLoading) {
         return (
-            <div className='flex justify-center align-center h-[300px]'>
-                <Spin />
-            </div>
+            <Loader />
         );
     }
 
     return (
-        <div>
-            <p className='text-[20px] font-semibold'>Race Details</p>
-
-            <div className='flex flex-col gap-3 p-5'>
-                {
-                    data?.RaceTable?.Races[0]?.Results?.map(round => {
-                        return (
-                            <div className='flex justify-between'>
-                                <p>Driver: {round.Driver.givenName} {round.Driver.familyName}</p>
-
-                            </div>
-                        )
-                    })
-                }
+        <div className='py-5 px-3 space-y-3'>
+            <div className='flex gap-2'>
+                <BackButton />
+                <p className='text-[20px] font-semibold'>Race Details</p>
             </div>
+
+            <RaceDetailsView details={data?.RaceTable?.Races[0]?.Results} />
 
             <div className='flex justify-end'>
                 <Pagination

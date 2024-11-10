@@ -30,6 +30,31 @@ code {
   color: black;
 }
 
+.ant-pagination .ant-pagination-item-active:hover {
+  border-color: red;
+}
+
+.ant-pagination .ant-pagination-item-active:hover a {
+  color: red;
+}
+
 .ant-spin-dot-item {
   background-color: red;
+}
+
+.ant-btn.btn-text-white:hover {
+  color: red !important;
+}
+
+.ant-btn.btn-text-white:focus {
+  color: red !important;
+}
+
+.ant-btn-variant-outlined:not(:disabled):not(.ant-btn-disabled):hover {
+  color: red;
+  border-color: red;
+}
+
+.ant-pagination .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-link-icon{
+  color:red;
 }

@@ -48,3 +48,10 @@ export function convertXMLtoJSON(xml) {
     const jsonResult = xmlToJson(xmlDoc.documentElement);
     return jsonResult;
 }
+
+export function convertDate(originalDate) {
+    const date = new Date(originalDate);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = date.toLocaleDateString('en-US', options);
+    return formattedDate
+}
