@@ -11,14 +11,15 @@ function RacesListView({ races, pinnedRaces, setPinnedRaces }) {
                     const date = convertDate(race.date)
                     const isPinned = pinnedRaces.includes(race.raceName)
                     return (
-                        <div className='flex justify-between items-center border-2 p-5 rounded-xl shadow-sm shadow-red-200'>
+                        <div className='flex flex-col sm:flex-row justify-between sm:items-center border-2 p-5 rounded-xl shadow-sm shadow-red-200'>
                             <div>
                                 <p className='text-[18px] font-semibold'>Race: <span className='text-gray-700'>{race.raceName}</span></p>
                                 <p className='text-[18px] font-semibold'>Circuit: <span className='text-gray-700'>{race.Circuit.circuitName}</span></p>
-                                <p className='text-[18px] font-semibold'>Date: <space className='text-gray-700'>{date}</space></p>
+                                <p className='text-[18px] font-semibold'>Date: <span className='text-gray-700'>{date}</span></p>
                             </div>
                             <ViewRaceDetailsButton season={race.season} round={race.round} name={race.raceName} pinned={isPinned} setPinnedRaces={setPinnedRaces} />
                         </div>
+
                     )
                 })
             }

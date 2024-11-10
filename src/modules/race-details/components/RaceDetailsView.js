@@ -30,7 +30,7 @@ const PerformanceChart = ({ drivers }) => {
     };
 
     return (
-        <div className='justify-self-center w-[70%]'>
+        <div className='grid justify-self-center w-full h-full md:w-[70%]'>
             <Bar data={data} />
         </div>
     )
@@ -38,7 +38,7 @@ const PerformanceChart = ({ drivers }) => {
 
 function DetailsBox({ title, text }) {
     return (
-        <div className='flex justify-center items-center '>
+        <div className='flex justify-start md:justify-center items-center '>
             <p className='p-[16px] font-medium'>{title}:</p>
             <p className='p-[16px] font-medium'>{text}</p>
         </div>
@@ -47,7 +47,7 @@ function DetailsBox({ title, text }) {
 
 function RaceDetailsView({ details }) {
     return (
-        <div className='grid w-[80%] justify-self-center space-y-3'>
+        <div className='grid w-full md:w-[80%] justify-self-center space-y-3'>
             <div className='border-2 shadow-sm w-full p-3 rounded-xl'>
                 <p className='text-[18px] font-medium'>Race Performance</p>
                 <PerformanceChart drivers={details} />
@@ -61,7 +61,7 @@ function RaceDetailsView({ details }) {
                             return (
                                 <div className='flex flex-col justify-center items-center border-2 p-5 w-full rounded-xl space-y-3 shadow-md shadow-red-200'>
                                     <p className='text-[20px] font-semibold'>{driver.Driver.givenName} {driver.Driver.familyName}</p>
-                                    <div className='grid grid-cols-3 justify-center items-center gap-2 w-full'>
+                                    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center items-center gap-2 w-full'>
                                         <DetailsBox title={'Nationality'} text={`${driver.Driver.nationality}`} />
                                         <DetailsBox title={'Rank'} text={`${driver.position}`} />
                                         <DetailsBox title={'Team'} text={`${driver.Constructor.name}`} />
