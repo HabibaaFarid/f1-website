@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# F1 Website
+This website is dedicated to show all the info you need about Formula 1 races!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Content:
+- Features
+- Architecture
+- Setup and Installation
+- Usage
+## Features:
+-   **Race Details**: Access detailed information about each race, including date, location, and results.
+-   **Driver Profiles**: View profiles of drivers with their career statistics and recent performances.
+-   **Team Information**: Explore details about Formula 1 teams, their histories, and achievements.
+-   **Interactive Charts**: Visualize performance data through interactive charts and graphs.
+-   **Responsive Design**: Optimized for various devices, ensuring a seamless user experience across desktops, tablets, and smartphones.
 
-## Available Scripts
+## Architecture:
+The application follows a modular architecture, separating concerns to enhance maintainability and scalability.
 
-In the project directory, you can run:
+-   **Frontend**: Developed using **React.js** for building user interface. **Tailwind CSS** is utilized for styling. **Axios** for data fetching and **TanStack Query** for caching 
+    
+-   **Components**: The UI is divided into reusable components, each responsible for a specific piece of functionality, such as displaying race details, driver profiles, or performance information.
+    
+-   **State Management**: React's built-in state management is employed to handle component states and props, ensuring efficient data flow throughout the application.
+    
+-   **Routing**: React Router is used to manage navigation within the application, allowing users to move between different sections seamlessly.
 
-### `npm start`
+## Setup and Installation:
+- Clone the project using this command:
+git clone https://github.com/HabibaaFarid/f1-website.git
+- Navigate to the project directory 
+- Install dependencies using this command:
+npm install
+- Lastly, you can start the project using this command:
+npm start
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Usage:
+Once the development server is running, you can explore the application:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+-   **Home Page**: Provides an overview of all seasons of formula 1.
+-   **Races**: Browse through the list of races, view details, and access historical data.
+-   **Driver Details in Races**: View detailed information about drivers participating in a particular race, including their lap performance, nationality, rank, and team.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+You can also visit the deployed website here: https://f1-website-mock.vercel.app/ 
