@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { Button } from 'antd'
 import { GridIcon, ListIcon } from '../../../utils/icons'
 import RacesListView from './RacesListView'
@@ -14,12 +14,8 @@ function SeasonRacesView({ races }) {
     const pin = new PinnedRaces()
 
     const [pinnedRaces, setPinnedRaces] = useState(pin.getRaces(seasonId))
-    const [sortedRaces, setSortedRaces] = useState([])
 
-    useEffect(() => {
-        const racesSorted = sortRaces(races,pinnedRaces)
-        setSortedRaces([...racesSorted]);
-    }, [pinnedRaces, races]);
+    const sortedRaces = useMemo(() => { return sortRaces(races, pinnedRaces) }, [pinnedRaces, races])
 
     return (
         <div>
