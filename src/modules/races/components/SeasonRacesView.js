@@ -1,11 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button } from 'antd'
 import { GridIcon, ListIcon } from '../../../utils/icons'
 import RacesListView from './RacesListView'
 import RacesCardView from './RacesCardView'
+import PinnedRaces from '../PinnedRaces'
+import { sortRaces } from '../../../utils/utils'
+import { useParams } from 'react-router-dom'
 
 function SeasonRacesView({ races }) {
     const [viewMode, setViewMode] = useState('list')
+    const { seasonId } = useParams()
+
+    const pin = new PinnedRaces()
+
+    const [pinnedRaces, setPinnedRaces] = useState(pin.getRaces(seasonId))
+    const [sortedRaces, setSortedRaces] = useState([])
+
+    useEffect(() => {
+        const racesSorted = sortRaces(races,pinnedRaces)
+        setSortedRaces([...racesSorted]);
+    }, [pinnedRaces, races]);
 
     return (
         <div>
@@ -21,7 +35,9 @@ function SeasonRacesView({ races }) {
             </div>
             <div>
                 {
-                    viewMode === 'list' ? <RacesListView races={races} /> : <RacesCardView races={races} />
+                    viewMode === 'list' ?
+                        <RacesListView races={sortedRaces} pinnedRaces={pinnedRaces} setPinnedRaces={setPinnedRaces} /> :
+                        <RacesCardView races={sortedRaces} pinnedRaces={pinnedRaces} setPinnedRaces={setPinnedRaces} />
                 }
             </div>
         </div>

@@ -55,3 +55,13 @@ export function convertDate(originalDate) {
     const formattedDate = date.toLocaleDateString('en-US', options);
     return formattedDate
 }
+
+export const sortRaces = (races, pinnedRaces ) => {
+    const sortedRaces = races?.sort((a, b) => {
+        const isA = pinnedRaces?.includes(a.raceName)
+        const isB = pinnedRaces?.includes(b.raceName)
+        if (isA === isB) return 0;
+        return isA ? -1 : 1
+    })
+    return sortedRaces
+}

@@ -1,13 +1,22 @@
 import { Button } from 'antd'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { PinIcon } from '../../../utils/icons'
+import { PinIcon, UnpinIcon } from '../../../utils/icons'
+import PinnedRaces from '../PinnedRaces'
 
-function ViewRaceDetailsButton({ season, round }) {
+function ViewRaceDetailsButton({ season, round, name, pinned, setPinnedRaces }) {
     const navigate = useNavigate()
 
-    const handlePinRace = () => {
+    const pin = new PinnedRaces()
 
+    const handlePinRace = () => {
+        pin.addRace(season, name)
+        setPinnedRaces(prevState => [...prevState, name]);
+    }
+
+    const handleUnpinRace = () => {
+        pin.removeRace(season, name)
+        setPinnedRaces(prevState => prevState.filter(race => race !== name));
     }
 
     return (
@@ -19,11 +28,18 @@ function ViewRaceDetailsButton({ season, round }) {
             >
                 View Details
             </Button>
-            <Button
-                size='large'
-                icon={<PinIcon />}
-                onClick={handlePinRace}
-            />
+            {pinned ?
+                <Button
+                    size='large'
+                    icon={<UnpinIcon />}
+                    onClick={handleUnpinRace}
+                /> :
+                <Button
+                    size='large'
+                    icon={<PinIcon />}
+                    onClick={handlePinRace}
+                />
+            }
         </div>
     )
 }
