@@ -26,7 +26,7 @@ function SeasonsPage() {
 
     return (
         <div className='py-5 px-3 space-y-3'>
-            <p className='text-[24px] font-semibold'>All Seasons</p>
+            <p className='text-[24px] font-semibold' data-testid='title'>All Seasons</p>
 
             <SeasonsView seasons={data?.SeasonTable?.Season} />
 
