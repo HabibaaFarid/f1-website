@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React from 'react'
 import { Pagination } from 'antd';
 import useRaceDetails from '../modules/race-details/hooks/useRaceDetails';
 import { useParams, useSearchParams } from 'react-router-dom';
